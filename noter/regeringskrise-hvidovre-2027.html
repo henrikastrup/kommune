@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hvidovre går ind i budgetlægningen i blinde — kommune.astrup.org</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1a2e; --muted: #5a5a72; --accent: #c0392b;
+      --paper: #f7f4ef; --rule: #ddd8d0; --sidebar-w: 230px;
+    }
+    html { font-size: 17px; }
+    body { background: var(--paper); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-weight: 300; line-height: 1.75; min-height: 100vh; display: flex; flex-direction: column; }
+    a { color: inherit; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 1.2rem 2rem; flex-shrink: 0; }
+    .site-name { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .site-name:hover { color: var(--accent); }
+
+    .layout { display: flex; flex: 1; }
+
+    aside {
+      width: var(--sidebar-w); min-width: var(--sidebar-w);
+      border-right: 1px solid var(--rule); padding: 2rem 1.4rem;
+      position: sticky; top: 0; height: 100vh; overflow-y: auto; flex-shrink: 0;
+    }
+    .nav-section { margin-bottom: 2rem; }
+    .nav-section-title { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); padding-bottom: 0.5rem; margin-bottom: 0.8rem; border-bottom: 1px solid var(--rule); display: block; }
+    .nav-section ul { list-style: none; }
+    .nav-section ul li { margin-bottom: 0.7rem; }
+    .nav-section ul li a { font-size: 0.8rem; color: var(--muted); text-decoration: none; line-height: 1.4; display: block; transition: color 0.15s; }
+    .nav-section ul li a:hover { color: var(--accent); }
+    .nav-section ul li a.active { color: var(--ink); font-style: italic; }
+    .nav-date { font-size: 0.62rem; color: var(--rule); display: block; margin-top: 0.1rem; }
+
+    .main-content { flex: 1; min-width: 0; }
+
+    .article-header { padding: 3rem 3rem 2rem; border-bottom: 1px solid var(--rule); max-width: 700px; }
+    .article-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: block; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 1rem; }
+    .standfirst { font-size: 1rem; color: var(--muted); font-style: italic; line-height: 1.65; margin-bottom: 1.4rem; max-width: 560px; }
+    .byline { font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; }
+
+    .article-body { max-width: 600px; padding: 2.5rem 3rem 3rem; }
+    .article-body p { margin-bottom: 1.4rem; font-size: 0.97rem; }
+    .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin: 2.5rem 0 0.7rem; color: var(--ink); }
+
+    blockquote { border-left: 3px solid var(--accent); margin: 2rem 0; padding: 0.4rem 0 0.4rem 1.4rem; font-style: italic; font-size: 1rem; color: var(--muted); line-height: 1.6; }
+    blockquote cite { display: block; margin-top: 0.5rem; font-size: 0.75rem; font-style: normal; letter-spacing: 0.05em; }
+
+    .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0 2rem; }
+    .scenario-box { border: 1px solid var(--rule); padding: 1.1rem; background: white; }
+    .scenario-box .s-label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .scenario-box .s-year { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+    .scenario-box p { font-size: 0.82rem !important; color: var(--muted); margin: 0 !important; line-height: 1.5; }
+
+    .fact-box { border: 1px solid var(--rule); background: white; padding: 1.4rem 1.6rem; margin: 2rem 0; }
+    .fact-box .fact-label { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
+    .fact-box table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+    .fact-box td { padding: 0.38rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .fact-box tr:last-child td { border-bottom: none; }
+    .fact-box td:last-child { text-align: right; color: var(--ink); }
+    .fact-box td:first-child { color: var(--muted); }
+    .fact-note { font-size: 0.73rem; color: var(--muted); font-style: italic; margin-top: 0.8rem; line-height: 1.5; }
+
+    .sources { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+    .sources .s-label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.7rem; }
+    .sources p { font-size: 0.75rem !important; color: var(--muted); margin-bottom: 0.3rem !important; line-height: 1.5; }
+
+    /* ── Permalink banner ── */
+    .permalink-bar {
+      margin: 2.5rem 0 0;
+      padding: 1rem 1.4rem;
+      background: white;
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.78rem;
+    }
+    .permalink-bar .pl-label { color: var(--muted); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+    .permalink-bar .pl-url { color: var(--accent); word-break: break-all; text-decoration: none; }
+    .permalink-bar .pl-url:hover { text-decoration: underline; }
+    .copy-btn {
+      margin-left: auto; white-space: nowrap; font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; background: none; border: 1px solid var(--rule);
+      padding: 0.3rem 0.7rem; cursor: pointer; color: var(--muted); transition: all 0.15s;
+    }
+    .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer { padding: 1.2rem 3rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--muted); margin-top: auto; }
+    footer a { text-decoration: none; color: var(--muted); }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 680px) {
+      .layout { flex-direction: column; }
+      aside { width: 100%; min-width: unset; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--rule); }
+      .article-header, .article-body { padding-left: 1.4rem; padding-right: 1.4rem; }
+      h1 { font-size: 1.75rem; }
+      .scenario-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.2rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-header">
+    <a class="site-name" href="/">← kommune.astrup.org</a>
+  </div>
+
+  <div class="layout">
+
+    <aside id="sidebar"><!-- nav indlæses --></aside>
+
+    <div class="main-content">
+
+      <div class="article-header">
+        <span class="article-tag">Blogpost · Tilskud &amp; udligning · Budgetlægning 2027</span>
+        <h1>Hvidovre går ind i budgetlægningen i blinde</h1>
+        <p class="standfirst">Regeringsforhandlingerne kan forsinke statens tilskudsudmelding til september. For Hvidovre — der modtager over 1,2 mia. kr. om året i statsstøtte — er det en alvorlig usikkerhed at gå ind i budgetlægningen for 2027 med.</p>
+        <p class="byline">Publiceret 12. maj 2026</p>
+      </div>
+
+      <div class="article-body">
+
+        <p>Hvert år følger kommunernes økonomiarbejde en fast kalender. Staten og kommunerne indgår en økonomiaftale i juni, og inden udgangen af måneden modtager hver enkelt kommune en præcis opgørelse over næste års tilskud og udligning. Den opgørelse er udgangspunktet for budgetlægningen.</p>
+
+        <p>I år er der ingen regering til at indgå den aftale. Og jo længere forhandlingerne trækker ud, desto større er risikoen for, at hele årshjulet forskydes — potentielt til august eller september.</p>
+
+        <blockquote>
+          "Det er ikke nogen katastrofemelding fra os. Det kan stadig lade sig gøre at få en økonomiaftale, selv hvis der går to til tre uger, inden vi får en regering."
+          <cite>— Kristian Vendelbo, administrerende direktør, KL</cite>
+        </blockquote>
+
+        <p>Historien viser, at det kan gå to veje. I 2015 lykkedes det på trods af et sent valg at nå en økonomiaftale allerede den 3. juli. I 2019 gik det anderledes: økonomiaftalen kom først den 6. september, og kommunerne modtog statens tilskudsudmelding den 25. september — blot tre uger inden budgetvedtagelsen.</p>
+
+        <div class="scenario-grid">
+          <div class="scenario-box">
+            <p class="s-label">Bedste scenarie — som i 2015</p>
+            <div class="s-year">Juli</div>
+            <p>Økonomiaftale primo juli, tilskudsudmelding medio juli. Stramt, men håndterbart for budgetprocessen.</p>
+          </div>
+          <div class="scenario-box">
+            <p class="s-label">Værste scenarie — som i 2019</p>
+            <div class="s-year">September</div>
+            <p>Tilskudsudmelding 25. september — tre uger før budgetvedtagelse. Ekstremt komprimeret forløb.</p>
+          </div>
+        </div>
+
+        <h2>Hvad det betyder konkret for Hvidovre</h2>
+
+        <p>Hvidovre modtager hvert år over 1,2 mia. kr. i tilskud og udligning fra staten — en af kommunens største og mest afgørende indtægtskilder. Kommer statens opgørelse over næste års beløb først i september, skal Hvidovre påbegynde budgetlægningen for 2027 uden kendskab til denne centrale størrelse.</p>
+
+        <p>Dertil kommer, at en ny regering skal tage stilling til en række uafklarede spørgsmål, som alle har direkte betydning for Hvidovres økonomi:</p>
+
+        <p><strong>Udgifter på det sociale område</strong> er steget markant på landsplan — kommunerne brugte 2,6 mia. kr. mere end i 2024 og 3,7 mia. kr. mere end budgetteret for 2025. Hvidovre har relativt høje sociale udgiftsbehov og har en klar interesse i en national løsning, der anerkender dette.</p>
+
+        <p><strong>Ejendomsskatteefterreguleringer</strong> fra 2021–2023 risikerer at medføre uforudsete betalinger til eller fra staten i de kommende år som følge af forsinkelser i det nye ejendomsvurderingssystem.</p>
+
+        <p><strong>Fordeling af virksomhedsskat</strong> er lovet revideret. Hvidovre modtager relativt lidt i virksomhedsskat sammenlignet med landsgennemsnittet, og en mere ligelig fordeling er aftalt implementeret fra 2027 — men løsningen er endnu ikke gennemført.</p>
+
+        <p><strong>Sundhedsreformens overgangsordning</strong> er heller ikke endeligt afklaret. KL forventer en løsning i løbet af foråret 2026 — men det forudsætter, at der er en regering til at indgå den.</p>
+
+        <h2>En særlig opmærksomhed: efterregulering i 2027 og 2028</h2>
+
+        <p>KL's beregningsnotat fra april 2026 gør opmærksom på, at kommuner der valgte statsgaranti i budgetterne for 2024 og 2025, i 2027 og 2028 vil opleve særlige efterreguleringsposter. Det skyldes en midlertidig kompensationsordning, der sikrer disse kommuner mod at blive stillet dårligere end forventet. Hvidovre bør vurdere konsekvenserne konkret i forbindelse med budgetlægningen.</p>
+
+        <h2>Hvidovre — fakta om skat, tilskud og udligning</h2>
+
+        <div class="fact-box">
+          <p class="fact-label">Nøgletal — Hvidovre Kommune</p>
+          <table>
+            <tr><td>Indbyggertal</td><td>ca. 54.000</td></tr>
+            <tr><td>Statsstøtte 2026</td><td>ca. 1.267 mio. kr.</td></tr>
+            <tr><td>Forventet statsstøtte 2031</td><td>ca. 793 mio. kr. *</td></tr>
+            <tr><td>Sociale udgiftsbehov ift. landsgennemsnit</td><td>+17,7 pct.</td></tr>
+            <tr><td>Skatteindtægter ift. landsgennemsnit</td><td>omtrent på niveau</td></tr>
+            <tr><td>Virksomhedsskatteindtægter ift. landsgennemsnit</td><td>7–13 pct. lavere</td></tr>
+          </table>
+          <p class="fact-note">* Faldet afspejler ikke en forværring af kommunens økonomi, men er en direkte følge af sundhedsreformen, som overfører opgaver — og den tilhørende finansiering — fra kommunerne til regionerne. Pengene følger med opgaverne.</p>
+        </div>
+
+        <div class="sources">
+          <p class="s-label">Kilder</p>
+          <p>NB Økonomi: <em>Regeringskaos kan sende kommunernes økonomiaftale helt ind i sensommeren</em>, 11. maj 2026</p>
+          <p>KL: <em>Beregningsgrundlaget for skatte- og tilskudsmodellen for 2027</em>, april 2026</p>
+          <p>Indenrigs- og Sundhedsministeriet: <em>Kommunal udligning og generelle tilskud 2026</em>, juni 2025</p>
+        </div>
+
+        <div class="permalink-bar">
+          <span class="pl-label">Link til denne artikel</span>
+          <a class="pl-url" href="https://kommune.astrup.org/noter/regeringskrise-hvidovre-2027.html">
+            kommune.astrup.org/noter/regeringskrise-hvidovre-2027.html
+          </a>
+          <button class="copy-btn" onclick="navigator.clipboard.writeText('https://kommune.astrup.org/noter/regeringskrise-hvidovre-2027.html').then(()=>{this.textContent='Kopieret ✓';setTimeout(()=>this.textContent='Kopiér link',2000)})">Kopiér link</button>
+        </div>
+
+      </div>
+
+      <footer>
+        <a href="/">← Alle noter</a>
+        <span>kommune.astrup.org</span>
+      </footer>
+
+    </div>
+  </div>
+
+  <script>
+    // Indlæs fælles navigation
+    fetch('/nav.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('sidebar').innerHTML = html;
+        // Markér aktiv side
+        document.querySelectorAll('#sidebar a').forEach(a => {
+          if (a.href === window.location.href) a.classList.add('active');
+        });
+      });
+  </script>
+
+</body>
+</html>
