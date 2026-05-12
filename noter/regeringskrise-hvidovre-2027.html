@@ -68,8 +68,12 @@
   /* ── Article header ── */
   .article-header {
     background: var(--green); color: #fff;
-    padding: 2.5rem 3.5rem 2.5rem 3.5rem;
+    padding: 0;
     position: relative; overflow: hidden;
+  }
+  .article-header-inner {
+    max-width: 860px;
+    padding: 2.5rem 3.5rem 2.5rem 3.5rem;
   }
   .article-header::before {
     content: ''; position: absolute; right: -60px; bottom: -60px;
@@ -157,10 +161,12 @@
   <div class="main-content">
 
     <div class="article-header">
+    <div class="article-header-inner">
       <span class="article-tag">Blogpost · Tilskud &amp; udligning · Budgetlægning 2027</span>
       <h1>Hvidovre går ind i budgetlægningen <em>i blinde</em></h1>
       <p class="standfirst">Regeringsforhandlingerne kan forsinke statens tilskudsudmelding til september. For Hvidovre — der modtager over 1,2 mia. kr. om året i statsstøtte — er det en alvorlig usikkerhed at gå ind i budgetlægningen for 2027 med.</p>
       <p class="byline">Publiceret 12. maj 2026</p>
+    </div>
     </div>
 
     <div class="article-body">
