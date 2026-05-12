@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hvidovre i økonomisk klemme — kommune.astrup.org</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+
+  :root {
+    --green:     #1A4D2E;
+    --green-mid: #2E7D54;
+    --gold:      #C9973A;
+    --red:       #C0392B;
+    --bg:        #F9F6F0;
+    --card:      #FFFFFF;
+    --text:      #1C1C1A;
+    --mid:       #4A4A44;
+    --muted:     #8A8A7E;
+    --border:    #E2DDD4;
+    --shadow:    0 2px 20px rgba(26,77,46,0.07);
+    --sidebar-w: 240px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Navbar ── */
+  .ap-navbar {
+    all: unset; display: flex !important; align-items: center; gap: 0;
+    background: #0E1612; border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 28px; height: 40px; font-family: 'DM Mono', monospace;
+    position: relative; z-index: 9999; box-sizing: border-box; width: 100%;
+  }
+  .ap-back { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.55); font-size: 11.5px; letter-spacing: 0.04em; text-decoration: none; transition: color 0.18s; }
+  .ap-back:hover { color: #E8C06A; }
+  .ap-back:hover svg { transform: translateX(-3px); }
+  .ap-back svg { flex-shrink: 0; transition: transform 0.18s; }
+  .ap-brand { font-size: 11.5px; letter-spacing: 0.08em; color: #E8C06A; margin-left: 4px; }
+  .ap-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.1); margin: 0 16px; }
+  .ap-domain { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+  .ap-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: rgba(201,151,58,0.6); margin-right: 8px; vertical-align: middle; }
+
+  /* ── Layout ── */
+  .layout { display: flex; flex: 1; }
+
+  /* ── Sidebar ── */
+  aside {
+    width: var(--sidebar-w); min-width: var(--sidebar-w);
+    background: var(--green); color: #fff;
+    padding: 2rem 1.4rem;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto; flex-shrink: 0;
+  }
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.8rem; display: block; }
+  .nav-section { margin-bottom: 2rem; }
+  .nav-section-title { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); padding-bottom: 0.5rem; margin-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: block; }
+  .nav-section ul { list-style: none; }
+  .nav-section ul li { margin-bottom: 0.7rem; }
+  .nav-section ul li a { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.45; display: block; transition: color 0.15s; font-family: 'DM Sans', sans-serif; }
+  .nav-section ul li a:hover { color: #E8C06A; }
+  .nav-section ul li a.active { color: #E8C06A; }
+  .nav-date { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.25); display: block; margin-top: 0.15rem; }
+
+  /* ── Main ── */
+  .main-content { flex: 1; min-width: 0; }
+
+  /* ── Article header ── */
+  .article-header {
+    background: var(--green); color: #fff;
+    padding: 2.5rem 3.5rem 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .article-header::before {
+    content: ''; position: absolute; right: -60px; bottom: -60px;
+    width: 280px; height: 280px; border-radius: 50%;
+    background: rgba(255,255,255,.03); pointer-events: none;
+  }
+  .article-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.8rem; display: block; }
+  h1 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 2.8vw, 2.4rem); font-weight: 400; line-height: 1.2; color: #fff; margin-bottom: 0.9rem; max-width: 780px; }
+  h1 em { font-style: italic; color: #E8C06A; }
+  .standfirst { font-size: 0.9rem; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.65; max-width: 660px; margin-bottom: 1.2rem; }
+  .byline { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+  /* ── Article body ── */
+  .article-body { max-width: 860px; padding: 2.5rem 3.5rem 4rem; }
+  .article-body p { margin-bottom: 1.3rem; font-size: 0.97rem; line-height: 1.75; color: var(--text); }
+  .article-body h2 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400; margin: 2.5rem 0 0.7rem; color: var(--text); }
+
+  /* ── Blockquote ── */
+  blockquote { border-left: 3px solid var(--green-mid); margin: 2rem 0; padding: 0.5rem 0 0.5rem 1.4rem; font-style: italic; font-size: 0.97rem; color: var(--mid); line-height: 1.65; }
+  blockquote cite { display: block; margin-top: 0.5rem; font-size: 0.72rem; font-style: normal; font-family: 'DM Mono', monospace; letter-spacing: 0.04em; color: var(--muted); }
+
+  /* ── Highlight box ── */
+  .highlight-box { background: #EBF4EF; border-left: 4px solid var(--green); padding: 1.1rem 1.5rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+  .highlight-box p { margin: 0 !important; font-size: 0.97rem !important; }
+  .highlight-box strong { color: var(--green); }
+
+  /* ── Scenario grid ── */
+  .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0 2rem; }
+  .scenario-box { background: var(--card); border: 1px solid var(--border); border-top: 3px solid var(--green); padding: 1.2rem; border-radius: 6px; box-shadow: var(--shadow); }
+  .scenario-box .s-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+  .scenario-box .s-year { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--green); line-height: 1; margin-bottom: 0.4rem; }
+  .scenario-box p { font-size: 0.82rem !important; color: var(--mid); margin: 0 !important; line-height: 1.5; }
+
+  /* ── Fact box ── */
+  .fact-box { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--green); border-radius: 0 8px 8px 0; padding: 1.4rem 1.6rem; margin: 2rem 0; box-shadow: var(--shadow); }
+  .fact-box .fact-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .fact-box table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+  .fact-box td { padding: 0.4rem 0; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--mid); }
+  .fact-box tr:last-child td { border-bottom: none; }
+  .fact-box td:last-child { text-align: right; color: var(--text); font-weight: 500; }
+  .fact-box td:first-child { padding-right: 1rem; }
+  .fact-note { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-top: 0.9rem; line-height: 1.6; }
+
+  /* ── Sources ── */
+  .sources { margin-top: 3rem; padding: 1rem 1.4rem; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+  .sources .s-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.7rem; display: block; }
+  .sources p { font-family: 'DM Mono', monospace; font-size: 0.7rem !important; color: var(--muted); margin-bottom: 0.35rem !important; line-height: 1.55; }
+
+  /* ── Permalink ── */
+  .permalink-bar { margin: 2rem 0 0; padding: 0.9rem 1.2rem; background: var(--card); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; gap: 1rem; font-size: 0.78rem; }
+  .permalink-bar .pl-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .permalink-bar .pl-url { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--green-mid); word-break: break-all; }
+  .copy-btn { margin-left: auto; white-space: nowrap; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; background: none; border: 1.5px solid var(--border); padding: 0.3rem 0.8rem; cursor: pointer; color: var(--muted); border-radius: 5px; transition: all 0.15s; }
+  .copy-btn:hover { border-color: var(--green); color: var(--green); }
+
+  /* ── Footer ── */
+  footer { padding: 1.2rem 3.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); background: var(--card); }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--green); }
+
+  @media (max-width: 680px) {
+    .layout { flex-direction: column; }
+    aside { width: 100%; min-width: unset; height: auto; position: static; }
+    .article-header, .article-body { padding-left: 1.2rem; padding-right: 1.2rem; }
+    h1 { font-size: 1.5rem; }
+    .scenario-grid { grid-template-columns: 1fr; }
+    footer { padding: 1rem 1.2rem; }
+  }
+  </style>
+</head>
+<body>
+
+<div class="ap-navbar">
+  <a class="ap-back" href="/">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    <span class="ap-brand">kommune.astrup.org</span>
+  </a>
+  <div class="ap-sep"></div>
+  <span class="ap-domain"><span class="ap-dot"></span>Kommunaløkonomi</span>
+</div>
+
+<div class="layout">
+  <aside id="sidebar"></aside>
+
+  <div class="main-content">
+
+    <div class="article-header">
+    <div class="article-header-inner">
+      <span class="article-tag">Blogpost · Strategi · Finansiering 2027–2031</span>
+      <h1>Hvidovre i økonomisk klemme — <em>ejendomsskat og sundhedsreform presser fra hver sin side</em></h1>
+      <p class="standfirst">Finansieringsgrundlaget pr. borger falder fra 92.387 kr. i 2026 til 83.642 kr. i 2031. Bag tallet ligger to strukturelle bevægelser, der trykker fra hver sin side — og begge peger frem mod de afgørende forhandlinger om et nyt udligningssystem fra 2029.</p>
+      <p class="byline">Publiceret 12. maj 2026</p>
+    </div>
+    </div>
+
+    <div class="article-body">
+
+      <p>Hvidovre Kommune står over for en årrække præget af markante økonomiske forskydninger. Finansieringsgrundlaget pr. borger falder fra 92.387 kr. i 2026 til 83.642 kr. i 2031. Det er ikke et tal, der rejser sig af sig selv — bag det ligger to strukturelle bevægelser, der trykker fra hver sin side.</p>
+
+      <h2>Sundhedsreformen: det store dyk allerede fra 2027</h2>
+
+      <p>Den ene bevægelse er allerede en kendsgerning. Sundhedsreformen medfører, at ansvaret for akutsygepleje, midlertidige pladser og specialiseret rehabilitering flyttes fra kommunerne til regionerne pr. 1. januar 2027. Det betyder et fradrag i kommunernes samlede økonomi på 4,2 mia. kr. på landsplan — og for Hvidovre ser det sådan ud:</p>
+
+      <div class="scenario-grid">
+        <div class="scenario-box">
+          <p class="s-label">Bloktilskud 2026</p>
+          <div class="s-year">755,9</div>
+          <p>mio. kr. — inden sundhedsreformens virkning</p>
+        </div>
+        <div class="scenario-box">
+          <p class="s-label">Bloktilskud 2027</p>
+          <div class="s-year">449,0</div>
+          <p>mio. kr. — et fald på 307 mio. kr. på ét år</p>
+        </div>
+      </div>
+
+      <p>Det er vigtigt at understrege, at pengene ikke bare forsvinder. Opgaverne følger med finansieringen til regionerne, og kommunen slipper for de driftsudgifter, der var knyttet til dem. Men den generelle finansielle fleksibilitet, som bloktilskuddet giver — det råderum der ikke er øremærket til bestemte formål — bliver mærkbart mindre.</p>
+
+      <p>Hertil kommer afskaffelsen af den kommunale medfinansiering af sundhedsvæsenet. Hvidovre har hidtil betalt en andel af borgernes hospitalsudgifter. Det ansvar bortfalder med reformen — men for at sikre, at det ikke bliver en utilsigtet gevinst for kommunerne, modregnes beløbet i bloktilskuddet og udligningssystemet via en overgangsordning frem til 2028. Den endelige afklaring af overgangsordningens økonomi afventer fortsat forhandlinger.</p>
+
+      <h2>Ejendomsskatten: en teknisk bombe med 2029-lunte</h2>
+
+      <p>Den anden bevægelse er endnu ikke slået igennem — men fristen nærmer sig.</p>
+
+      <p>I det nuværende udligningssystem anvendes såkaldte beregningstekniske grundværdier i stedet for de faktiske ejendomsvurderinger. Denne ordning løber frem til og med 2028 og fungerer som en politisk stødpude: den neutraliserer de voldsomme udsving, som de nye ejendomsvurderinger ellers ville skabe i udligningen. Kommuner med kraftigt stigende ejendomspriser beskyttes midlertidigt mod at blive tilskrevet fiktive skatteindtægter, de ikke faktisk opkræver.</p>
+
+      <p>Problemet opstår i 2029, når de beregningstekniske værdier forventes erstattet af faktiske vurderinger.</p>
+
+      <div class="highlight-box">
+        <p>Her træder det fænomen i kraft, som fagligt betegnes som <strong>overudligning</strong>: udligningssystemet beregner en fiktiv indkomst for kommunen baseret på en gennemsnitlig skattesats — uanset hvad kommunen faktisk opkræver. Hvis Hvidovres ejendomsværdier stiger, og kommunen vælger at holde grundskylden lav for at skåne borgerne, skal vi alligevel betale udligning til andre kommuner, som om vi havde opkrævet fuldt ud.</p>
+      </div>
+
+      <p>Det er præcis den situation, borgmester Michael Vindfeldt på Frederiksberg beskriver som en potentiel regning på over 580 mio. kr. til hans kommune. Mekanikken er den samme for Hvidovre — omfanget afhænger af, hvordan ejendomsvurderingerne udvikler sig, og hvad det nye udligningssystem fra 2029 konkret kommer til at indeholde.</p>
+
+      <h2>Det store spørgsmål: hvad sker der efter 2028?</h2>
+
+      <p>Begge temaer peger frem mod de samme forhandlinger. Fra 2029 skal der et nyt udligningssystem på plads — og de politiske beslutninger, der træffes her, vil i høj grad definere Hvidovres økonomiske råderum i mange år frem.</p>
+
+      <p>Hvidovre er en modtagerkommune med et socioøkonomisk udgiftsbehov, der ligger markant over landsgennemsnittet. Det giver kommunen 293 mio. kr. i udligning for udgiftsbehov i 2027 — penge der er afgørende for at opretholde serviceniveauet. Jo mere et nyt udligningssystem vægter ejendomsværdier frem for faktiske sociale udgiftsbehov, desto mere pres sættes der på dette beløb.</p>
+
+      <p>Det er den klemme, Hvidovre befinder sig i: sundhedsreformen reducerer finansieringsgrundlaget fra den ene side, mens usikkerheden om ejendomsbeskatningens fremtid udgør en potentiel yderligere belastning fra den anden. De kommende politiske forhandlinger om udligningssystemet efter 2029 bliver dermed helt afgørende for Hvidovres evne til at opretholde det nuværende serviceniveau.</p>
+
+      <h2>Hvidovre — fakta om finansiering frem mod 2031</h2>
+
+      <div class="fact-box">
+        <p class="fact-label">Nøgletal — Hvidovre Kommune · Dataproces, maj 2026, faste 2027-priser</p>
+        <table>
+          <tr><td>Finansieringsgrundlag pr. borger 2026</td><td>92.387 kr.</td></tr>
+          <tr><td>Finansieringsgrundlag pr. borger 2031</td><td>83.642 kr.</td></tr>
+          <tr><td>Bloktilskud 2026</td><td>755,9 mio. kr.</td></tr>
+          <tr><td>Bloktilskud 2027 (efter sundhedsreform)</td><td>449,0 mio. kr.</td></tr>
+          <tr><td>Fald i bloktilskud 2026→2027</td><td>−306,9 mio. kr.</td></tr>
+          <tr><td>Udligning for udgiftsbehov 2027</td><td>ca. 293 mio. kr.</td></tr>
+          <tr><td>Socioøkonomisk udgiftsbehov over landsgennemsnit</td><td>+17,7 pct.point</td></tr>
+          <tr><td>Beregningsteknisk beskyttelse udløber</td><td>2028</td></tr>
+          <tr><td>Nyt udligningssystem forventes</td><td>2029</td></tr>
+        </table>
+      </div>
+
+      <div class="sources">
+        <span class="s-label">Kilder</span>
+        <p>Dataproces: <em>Primo maj 2026 — Prognose for Hvidovre Kommunes finansieringsgrundlag 2027–2031</em>, maj 2026</p>
+        <p>VIVE: <em>Kommunal udligning — Principper og dilemmaer</em>, 2025</p>
+        <p>KL: <em>Beregningsgrundlaget for skatte- og tilskudsmodellen for 2027</em>, april 2026</p>
+        <p>Metropol/Berlingske: <em>Frederiksberg frygter kæmperegning til borgerne</em>, marts 2025</p>
+      </div>
+
+      <div class="permalink-bar">
+        <span class="pl-label">Permalink</span>
+        <span class="pl-url">kommune.astrup.org/noter/hvidovre-okonomisk-klemme-2031.html</span>
+        <button class="copy-btn" onclick="navigator.clipboard.writeText('https://kommune.astrup.org/noter/hvidovre-okonomisk-klemme-2031.html').then(()=>{this.textContent='Kopieret ✓';setTimeout(()=>this.textContent='Kopiér link',2000)})">Kopiér link</button>
+      </div>
+
+    </div>
+
+    <footer>
+      <a href="/">← Alle noter</a>
+      <span>kommune.astrup.org</span>
+    </footer>
+  </div>
+</div>
+
+<script>
+  fetch('/nav.html').then(r=>r.text()).then(html=>{
+    document.getElementById('sidebar').innerHTML = html;
+    document.querySelectorAll('#sidebar a').forEach(a=>{
+      if(a.href === window.location.href) a.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
