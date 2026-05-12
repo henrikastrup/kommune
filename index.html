@@ -2,95 +2,9 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kommune.astrup.org — Kommunaløkonomi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --ink: #1a1a2e; --muted: #5a5a72; --accent: #c0392b;
-      --paper: #f7f4ef; --rule: #ddd8d0; --sidebar-w: 230px;
-    }
-    html { font-size: 17px; }
-    body { background: var(--paper); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-weight: 300; line-height: 1.75; min-height: 100vh; display: flex; flex-direction: column; }
-    a { color: inherit; }
-
-    /* ── Site header ── */
-    .site-header { border-bottom: 2px solid var(--ink); padding: 1.2rem 2rem; flex-shrink: 0; }
-    .site-name { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
-    .site-name:hover { color: var(--accent); }
-
-    /* ── Layout ── */
-    .layout { display: flex; flex: 1; }
-
-    /* ── Sidebar ── */
-    aside {
-      width: var(--sidebar-w);
-      min-width: var(--sidebar-w);
-      border-right: 1px solid var(--rule);
-      padding: 2rem 1.4rem;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      flex-shrink: 0;
-    }
-
-    .nav-section { margin-bottom: 2rem; }
-    .nav-section-title { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); padding-bottom: 0.5rem; margin-bottom: 0.8rem; border-bottom: 1px solid var(--rule); display: block; }
-    .nav-section ul { list-style: none; }
-    .nav-section ul li { margin-bottom: 0.7rem; }
-    .nav-section ul li a { font-size: 0.8rem; color: var(--muted); text-decoration: none; line-height: 1.4; display: block; transition: color 0.15s; }
-    .nav-section ul li a:hover { color: var(--accent); }
-    .nav-section ul li a.active { color: var(--ink); font-style: italic; }
-    .nav-date { font-size: 0.62rem; color: var(--rule); display: block; margin-top: 0.1rem; }
-
-    /* ── Main ── */
-    .main-content { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-
-    /* ── Welcome / index ── */
-    .welcome { padding: 4rem 3rem; max-width: 580px; }
-    .welcome h1 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
-    .welcome p { font-size: 0.97rem; color: var(--muted); font-style: italic; }
-
-    /* ── Footer ── */
-    footer { padding: 1.2rem 3rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--muted); margin-top: auto; }
-    footer a { text-decoration: none; color: var(--muted); }
-    footer a:hover { color: var(--accent); }
-
-    @media (max-width: 680px) {
-      .layout { flex-direction: column; }
-      aside { width: 100%; min-width: unset; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--rule); }
-      .welcome { padding: 2rem 1.4rem; }
-    }
-  </style>
+  <meta http-equiv="refresh" content="0; url=/noter/regeringskrise-hvidovre-2027.html">
+  <title>kommune.astrup.org</title>
+  <script>window.location.replace('/noter/regeringskrise-hvidovre-2027.html');</script>
 </head>
-<body>
-
-  <div class="site-header">
-    <a class="site-name" href="/">kommune.astrup.org — Kommunaløkonomi</a>
-  </div>
-
-  <div class="layout">
-    <aside id="sidebar"><!-- nav indlæses her --></aside>
-
-    <div class="main-content">
-      <div class="welcome">
-        <h1>Noter og analyser om det kommunale tilskuds- og udligningssystem</h1>
-        <p>Vælg en blogpost eller et notat i menuen til venstre.</p>
-      </div>
-
-      <footer>
-        <span>kommune.astrup.org</span>
-        <span><a href="https://astrup.org">astrup.org</a></span>
-      </footer>
-    </div>
-  </div>
-
-  <script>
-    fetch('/nav.html')
-      .then(r => r.text())
-      .then(html => { document.getElementById('sidebar').innerHTML = html; });
-  </script>
-</body>
+<body></body>
 </html>
